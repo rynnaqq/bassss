@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Sweetrose | Baby Storylens</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/paket.css">
+</head>
+
+<body>
+
+     <a href="../index.html" class="back-btn">
+        ← Kembali
+    </a>
+
+    <section class="package-hero">
+
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74" alt="Paket Sweetrose">
+
+        <div class="hero-overlay">
+            <div>
+                <h1>Paket Sweetrose</h1>
+                <p>
+                    Paket premium dengan lebih banyak pose dan variasi kostum.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="container">
+
+            <div class="price-box">
+
+                 <span class="price-label">
+                    Harga Paket Sweetrose
+                </span>
+
+                <h2>Rp 2.400.000</h2>
+                <p>
+                    Harga belum termasuk biaya home service
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Apa Yang Anda Dapatkan?</h2>
+                <p>Benefit lengkap dalam Paket Sweetrose</p>
+            </div>
+            <div class="benefit-card">
+                <span>👕</span>
+                <h3>3 Kostum Bayi</h3>
+                <p>Lebih banyak variasi konsep untuk sesi newborn.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>📸</span>
+                <h3>1 Basic Pose</h3>
+                <p>Pose newborn profesional dan aman.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>🧸</span>
+                <h3>1 Basic Prop</h3>
+                <p>Menambah kesan estetik dan unik pada hasil foto.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>✨</span>
+                <h3>20 Foto Edit Profesional</h3>
+                <p>Edit premium dengan detail terbaik.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>👨‍👩‍👧</span>
+                <h3>Free Foto With Parents</h3>
+                <p>Dokumentasi keluarga tanpa biaya tambahan.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>🎥</span>
+                <h3>Video Cinematic</h3>
+                <p>Video kenangan newborn dengan nuansa sinematik.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>📖</span>
+                <h3>Album Luxury 10RS</h3>
+                <p>Album premium dengan kualitas eksklusif.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>🖼️</span>
+                <h3>2 Cetak Foto 12RS + Frame</h3>
+                <p>Hasil cetak besar siap dipajang di rumah.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>☁️</span>
+                <h3>Semua File Digital</h3>
+                <p>Seluruh hasil foto dikirim dalam kualitas terbaik.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+
+        <div class="container">
+
+            <div class="cta">
+
+                <h2>Siap Mengabadikan Momen Si Kecil?</h2>
+
+                <p>
+                    Booking sekarang dan dapatkan jadwal terbaik untuk sesi foto newborn.
+                </p>
+
+                <a href="#" class="btn btn-primary" id="openBooking">
+                    Booking Paket Sweetrose
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="booking-modal" id="bookingModal">
+
+        <div class="booking-content">
+
+            <span class="close-modal">&times;</span>
+
+            <h2>Form Booking Paket Sweetrose</h2>
+
+            <form id="bookingForm">
+
+                <input type="text" id="nama" placeholder="Nama Mommy" required>
+
+                <textarea id="alamat" placeholder="Alamat Lengkap" required></textarea>
+
+                <label>Hari Perkiraan Lahir (Opsional)</label>
+                <input type="date" id="hpl" required>
+
+                <label>Tanggal Lahir Baby (Opsional)</label>
+                <input type="date" id="tglLahir">
+
+                <input type="text" id="bbLahir" placeholder="BB Lahir Baby (Opsional, contoh: 3.2 Kg)">
+
+                <select id="gender" required>
+                    <option value="">Pilih Jenis Kelamin</option>
+                    <option>Laki-laki</option>
+                    <option>Perempuan</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">
+                    Kirim Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Baby Storylens
+    </footer>
+
+    <script>
+
+        const modal = document.getElementById("bookingModal");
+        const openBtn = document.getElementById("openBooking");
+        const closeBtn = document.querySelector(".close-modal");
+
+        openBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            modal.classList.add("show");
+        });
+
+        closeBtn.addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("show");
+            }
+        });
+
+        document.getElementById("bookingForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                const nama = document.getElementById("nama").value;
+                const alamat = document.getElementById("alamat").value;
+                const hpl = document.getElementById("hpl").value || "-";
+                const tglLahir = document.getElementById("tglLahir").value || "-";
+                const bbLahir = document.getElementById("bbLahir").value || "-";
+                const gender = document.getElementById("gender").value;
+
+                const nomorWA = "6282132929419";
+
+                const pesan =
+                    `Halo Baby Storylens,
+
+Saya ingin booking Paket Sweetrose.
+
+DATA MOMMY
+
+Nama : ${nama}
+Alamat : ${alamat}
+
+DATA BABY
+
+HPL : ${hpl}
+Tanggal Lahir Baby : ${tglLahir}
+BB Lahir Baby : ${bbLahir}
+Jenis Kelamin : ${gender}`;
+
+                const url =
+                    `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+                window.open(url, "_blank");
+
+            });
+
+    </script>
+
+
+
+</body>
+
+</html>

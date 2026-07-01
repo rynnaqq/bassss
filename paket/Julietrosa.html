@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paket Julietrosa | Baby Storylens</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/paket.css">
+</head>
+
+<body>
+
+     <a href="../index.html" class="back-btn">
+        ← Kembali
+    </a>
+
+    <section class="package-hero">
+
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74" alt="Paket Julietrosa">
+
+        <div class="hero-overlay">
+            <div>
+                <h1>Paket Julietrosa</h1>
+                <p>
+                    Paket premium dengan lebih banyak pose dan variasi kostum.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="container">
+
+            <div class="price-box">
+
+                 <span class="price-label">
+                    Harga Paket Julietrosa
+                </span>
+
+                <h2>Rp 1.600.000</h2>
+                <p>
+                    Belum termasuk biaya home service
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Apa Yang Anda Dapatkan?</h2>
+                <p>Benefit lengkap dalam Paket Julietrosa</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>👕</span>
+                <h3>3 Kostum Bayi</h3>
+                <p>Beragam konsep foto dengan pilihan kostum menarik.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>📸</span>
+                <h3>1 Basic Pose</h3>
+                <p>Pose newborn yang aman dan nyaman untuk si kecil.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>🧸</span>
+                <h3>1 Basic Prop</h3>
+                <p>Properti tambahan untuk hasil foto lebih berkarakter.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>✨</span>
+                <h3>16 Foto Edit Profesional</h3>
+                <p>Retouching dan color grading profesional.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>👨‍👩‍👧</span>
+                <h3>Free Foto With Parents</h3>
+                <p>Mengabadikan momen hangat bersama keluarga.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>📖</span>
+                <h3>Album Premium 10RS</h3>
+                <p>Album eksklusif dengan tampilan lebih mewah.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>🖼️</span>
+                <h3>1 Cetak Foto 12RS + Frame</h3>
+                <p>Dicetak dengan kualitas premium dan frame elegan.</p>
+            </div>
+
+            <div class="benefit-card">
+                <span>☁️</span>
+                <h3>Semua File Digital</h3>
+                <p>File foto resolusi tinggi siap disimpan selamanya.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="container">
+
+            <div class="cta">
+
+                <h2>Siap Mengabadikan Momen Si Kecil?</h2>
+
+                <p>
+                    Booking sekarang dan dapatkan jadwal terbaik untuk sesi foto newborn.
+                </p>
+
+                <a href="#" class="btn btn-primary" id="openBooking">
+                    Booking Paket Julietrosa
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="booking-modal" id="bookingModal">
+
+        <div class="booking-content">
+
+            <span class="close-modal">&times;</span>
+
+            <h2>Form Booking Paket Julietrosa</h2>
+
+            <form id="bookingForm">
+
+                <input type="text" id="nama" placeholder="Nama Mommy" required>
+
+                <textarea id="alamat" placeholder="Alamat Lengkap" required></textarea>
+
+                <label>Hari Perkiraan Lahir (Opsional)</label>
+                <input type="date" id="hpl" required>
+
+                <label>Tanggal Lahir Baby (Opsional)</label>
+                <input type="date" id="tglLahir">
+
+                <input type="text" id="bbLahir" placeholder="BB Lahir Baby (Opsional, contoh: 3.2 Kg)">
+
+                <select id="gender" required>
+                    <option value="">Pilih Jenis Kelamin</option>
+                    <option>Laki-laki</option>
+                    <option>Perempuan</option>
+                </select>
+
+                <button type="submit" class="btn btn-primary">
+                    Kirim Booking
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Baby Storylens
+    </footer>
+
+    <script>
+
+        const modal = document.getElementById("bookingModal");
+        const openBtn = document.getElementById("openBooking");
+        const closeBtn = document.querySelector(".close-modal");
+
+        openBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            modal.classList.add("show");
+        });
+
+        closeBtn.addEventListener("click", function () {
+            modal.classList.remove("show");
+        });
+
+        window.addEventListener("click", function (e) {
+            if (e.target === modal) {
+                modal.classList.remove("show");
+            }
+        });
+
+        document.getElementById("bookingForm")
+            .addEventListener("submit", function (e) {
+
+                e.preventDefault();
+
+                const nama = document.getElementById("nama").value;
+                const alamat = document.getElementById("alamat").value;
+                const hpl = document.getElementById("hpl").value || "-";
+                const tglLahir = document.getElementById("tglLahir").value || "-";
+                const bbLahir = document.getElementById("bbLahir").value || "-";
+                const gender = document.getElementById("gender").value;
+
+                const nomorWA = "6282132929419";
+
+                const pesan =
+                    `Halo Baby Storylens,
+
+Saya ingin booking Paket Julietrosa.
+
+DATA MOMMY
+
+Nama : ${nama}
+Alamat : ${alamat}
+
+DATA BABY
+
+HPL : ${hpl}
+Tanggal Lahir Baby : ${tglLahir}
+BB Lahir Baby : ${bbLahir}
+Jenis Kelamin : ${gender}`;
+
+                const url =
+                    `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+
+                window.open(url, "_blank");
+
+            });
+
+    </script>
+
+
+
+</body>
+
+</html>

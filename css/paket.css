@@ -1,0 +1,320 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: #e57399;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #d85a85;
+    transform: translateY(-3px);
+}
+
+
+.package-hero {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.package-hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, .45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-overlay h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+}
+
+.price-box {
+    background: #fff8fb;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+}
+
+.price-box h2 {
+    color: #e57399;
+    font-size: 3rem;
+}
+
+.price-box p {
+    margin-top: 10px;
+}
+
+.price-label {
+    display: block;
+    color: #999;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.section-title h2 {
+    margin-bottom: 10px;
+}
+
+.benefit-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    transition: all .3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+    border: 1px solid rgba(229, 115, 153, .15);
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+    border-color: #e57399;
+}
+
+.benefit-card span {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.benefit-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
+}
+
+
+.testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.testi {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+}
+
+
+.faq-item {
+    background: #fff8fb;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+
+.faq-item h4 {
+    margin-bottom: 10px;
+    color: #e57399;
+}
+
+
+
+.cta {
+    text-align: center;
+    background: #fff8fb;
+    padding: 70px 20px;
+    border-radius: 25px;
+}
+
+.cta h2 {
+    margin-bottom: 15px;
+}
+
+.cta p {
+    margin-bottom: 30px;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+@media(max-width:768px) {
+
+    .hero-overlay h1 {
+        font-size: 2.5rem;
+    }
+
+    .price-box h2 {
+        font-size: 2.2rem;
+    }
+
+}
+
+.booking-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.booking-modal.show {
+    display: flex;
+}
+
+.booking-content {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 35px;
+    border-radius: 20px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.booking-content h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#bookingForm input,
+#bookingForm textarea,
+#bookingForm select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+#bookingForm textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#bookingForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Tombol Kembali */
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+
+    background: white;
+    color: #333;
+
+    text-decoration: none;
+
+    padding: 12px 20px;
+
+    border-radius: 50px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+
+    transition: .3s;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+}

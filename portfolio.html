@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baby Storylens | Portofolio</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/portfolio.css" />
+  </head>
+
+  <body>
+
+    <a href="index.html" class="back-btn"> 
+        ← Kembali 
+    </a>
+
+    <section class="portfolio-gallery">
+      <div class="container">
+        <div class="section-title">
+          <h2>Semua Portofolio</h2>
+          <p>Abadikan setiap momen indah bersama kami.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="images/GALERI1.webp"
+              alt="Portofolio 1"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI2.webp"
+              alt="Portofolio 2"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI3.webp"
+              alt="Portofolio 3"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI4.webp"
+              alt="Portofolio 4"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI5.webp"
+              alt="Portofolio 5"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI6.webp"
+              alt="Portofolio 6"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI7.webp"
+              alt="Portofolio 7"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI8.webp"
+              alt="Portofolio 8"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI9.webp"
+              alt="Portofolio 9"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI10.webp"
+              alt="Portofolio 10"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI11.webp"
+              alt="Portofolio 11"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI12.webp"
+              alt="Portofolio 12"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI13.webp"
+              alt="Portofolio 13"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI14.webp"
+              alt="Portofolio 14"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI15.webp"
+              alt="Portofolio 15"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI16.webp"
+              alt="Portofolio 16"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI17.webp"
+              alt="Portofolio 17"
+              onclick="openImage(this.src)"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="images/GALERI18.webp"
+              alt="Portofolio 18"
+              onclick="openImage(this.src)"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="imageModal" class="image-modal">
+      <span class="close" onclick="closeImage()">&times;</span>
+
+      <img id="modalImg" class="modal-content" />
+    </div>
+    <script>
+      function openImage(src) {
+        document.getElementById("imageModal").style.display = "flex";
+        document.getElementById("modalImg").src = src;
+      }
+
+      function closeImage() {
+        document.getElementById("imageModal").style.display = "none";
+      }
+
+      document
+        .getElementById("imageModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeImage();
+          }
+        });
+    </script>
+  </body>
+</html>
