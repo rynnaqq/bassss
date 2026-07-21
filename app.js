@@ -8,9 +8,33 @@ const app = {
         timeLeft: 0
     },
 
-    init() {
+        init() {
         this.renderHome();
     },
+
+    // KODE BARU UNTUK IMPORT DATA
+    importData(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const importedData = JSON.parse(e.target.result);
+                // Gabungkan data baru dengan data yang sudah ada di data.js
+                Object.assign(subjectsData, importedData);
+                
+                alert('Berhasil! Soal baru telah diimport dan ditambahkan.');
+                this.renderHome(); // Refresh tampilan kartu agar jumlah soal update
+                event.target.value = ''; // Reset input file
+            } catch (error) {
+                alert('Gagal mengimport! Pastikan format file adalah JSON yang valid.');
+                console.error(error);
+            }
+        };
+        reader.readAsText(file);
+    },
+    // AKHIR KODE BARU
 
     renderHome() {
         document.getElementById('screen-home').classList.remove('hidden');
