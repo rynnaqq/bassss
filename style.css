@@ -56,3 +56,19 @@ input[type="radio"]:checked + div, input[type="checkbox"]:checked + div {
 .rich-text img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1rem 0; }
 .rich-text table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
 .rich-text th, .rich-text td { border: 1px solid #d1d5db; padding: 0.5rem; text-align: left; }
+
+/* Menangani teks/rumus yang tumpah (overflow) pada layar kecil */
+.rich-text {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-x: auto; /* Memunculkan scroll horizontal jika ada tabel/rumus panjang */
+    max-width: 100%;
+}
+
+/* Memastikan render MathJax tidak merusak tata letak */
+mjx-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
