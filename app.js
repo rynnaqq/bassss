@@ -315,7 +315,8 @@ const app = {
                 ${optionsHtml}
                 <div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                     <h5 class="font-bold text-blue-800 mb-2"><i class="fas fa-lightbulb mr-2"></i>Pembahasan:</h5>
-                    <div class="text-blue-900 rich-text">${item.q.explanation}</div>
+                    <div class="text-blue-900 rich-text overflow-x-auto break-words">${item.q.explanation}</div>
+                    
                 </div>
             `;
             container.appendChild(card);
