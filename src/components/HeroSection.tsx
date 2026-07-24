@@ -1,12 +1,10 @@
 import React from 'react';
 import {
   ArrowRight,
-  Download,
   Github,
   Instagram,
   Youtube,
   Smartphone,
-  Code2,
   ExternalLink,
   User,
 } from 'lucide-react';
@@ -75,21 +73,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               pauseDuration={4500}
               className="text-base sm:text-lg max-w-xl"
             />
-
-            {/* View Profile Button - Desktop */}
-            <div className="hidden lg:block pt-2 w-full sm:w-auto">
-              <button
-                onClick={() => {
-                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                id="hero-view-profile-btn"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#e8590c] text-white font-extrabold text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 hover:bg-[#d9480f] hover:shadow-[0_0_30px_rgba(232,89,12,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer group"
-              >
-                <User className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                <span>View Profile</span>
-                <ArrowRight className="w-4 h-4 stroke-[3] group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
 
             {/* Social Media Bar */}
             <div className="pt-4 flex items-center gap-3">
@@ -163,18 +146,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       </div>
                     </div>
 
-                    {/* Tech Watermark Graphic */}
-                    <div className="absolute bottom-20 left-6 right-6 p-4 rounded-2xl bg-[#242424]/90 border border-[#4a2717] backdrop-blur-md">
-                      <div className="text-[11px] text-[#e8590c] font-mono tracking-wider font-bold uppercase">
-                        // Anonymous Developer Avatar
-                      </div>
-                      <div className="text-[#FFF7ED] font-extrabold text-lg mt-0.5">
-                        Ryan.
-                      </div>
-                      <div className="text-xs text-zinc-300 mt-1 flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-[#e8590c] animate-pulse" />
-                        Warmly welcoming new projects
-                      </div>
+                    {/* View Profile Button Inside Phone Screen (Yellow Box Area) */}
+                    <div className="absolute bottom-5 left-4 right-4 z-30">
+                      <button
+                        onClick={() => {
+                          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        id="phone-mockup-view-profile-btn"
+                        className="w-full py-3 px-5 rounded-full bg-[#e8590c] text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 hover:bg-[#d9480f] shadow-[0_0_25px_rgba(232,89,12,0.6)] transition-all duration-300 cursor-pointer group/btn active:scale-95"
+                      >
+                        <User className="w-4 h-4 text-white group-hover/btn:scale-110 transition-transform" />
+                        <span>View Profile</span>
+                        <ArrowRight className="w-4 h-4 stroke-[3] group-hover/phone-btn:translate-x-1 transition-transform" />
+                      </button>
                     </div>
                   </div>
 
@@ -188,33 +172,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     </div>
                   </div>
 
-                  {/* Badge Bawah-Kiri: Pill badge terang/transparan bertuliskan </> Clean code */}
-                  <div className="absolute bottom-6 left-4 z-20">
-                    <div className="px-3.5 py-1.5 rounded-full bg-[#2a2a2a]/95 border border-[#383838] text-[#FFF7ED] text-xs font-bold shadow-xl backdrop-blur-md flex items-center gap-1.5 hover:border-[#e8590c] transition-colors duration-300">
-                      <Code2 className="w-3.5 h-3.5 text-[#e8590c]" />
-                      <span>&lt;/&gt; Clean code</span>
-                    </div>
-                  </div>
-
                 </div>
               </div>
 
             </div>
-          </div>
-
-          {/* View Profile Button - Mobile (Positioned at the very bottom on HP) */}
-          <div className="block lg:hidden col-span-1 w-full pt-4">
-            <button
-              onClick={() => {
-                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              id="hero-view-profile-btn-mobile"
-              className="w-full px-8 py-3.5 rounded-full bg-[#e8590c] text-white font-extrabold text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 hover:bg-[#d9480f] shadow-[0_0_20px_rgba(232,89,12,0.4)] transition-all duration-300 cursor-pointer group active:scale-[0.98]"
-            >
-              <User className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-              <span>View Profile</span>
-              <ArrowRight className="w-4 h-4 stroke-[3] group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
         </div>
