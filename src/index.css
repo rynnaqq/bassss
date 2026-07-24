@@ -1,90 +1,66 @@
 @import "tailwindcss";
 
-@theme {
-  --color-rose-primary: #F43F5E;
-  --color-coral-accent: #FB923C;
-  --color-light-bg: #FFF1F2;
-  --color-paper-white: #FFFFFF;
-  --color-[#FFF1F2]: #FFF1F2;
-  --color-[#F43F5E]: #F43F5E;
-  --color-[#FB923C]: #FB923C;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-mono: 'Space Mono', monospace;
+@layer utilities {
+  .bg-dark-main {
+    background-color: #1a1a1a;
+  }
+  .bg-dark-card {
+    background-color: #242424;
+  }
+  .bg-dark-surface {
+    background-color: #2c2c2c;
+  }
+  .border-dark-border {
+    border-color: #383838;
+  }
+  .border-orange-subtle {
+    border-color: #4a2717;
+  }
+  .text-electric-orange {
+    color: #e8590c;
+  }
+  .bg-electric-orange {
+    background-color: #e8590c;
+  }
+  .text-warm-cream {
+    color: #FFF7ED;
+  }
+  .glow-orange {
+    box-shadow: 0 0 25px rgba(232, 89, 12, 0.3);
+  }
+  .glow-orange-lg {
+    box-shadow: 0 0 45px rgba(232, 89, 12, 0.45);
+  }
 }
 
-@layer base {
-  body {
-    background-color: #FFF1F2;
-    color: #1C1917;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', Georgia, serif;
-    color: #1C1917;
-  }
-}
-
-/* Custom Scrollbar for Magazine Style */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #FFF1F2;
+  background: #1a1a1a;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #F43F5E;
-  border-radius: 3px;
+  background: #333333;
+  border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #E11D48;
+  background: #e8590c;
 }
 
-/* Editorial Drop Cap Class */
-.drop-cap::first-letter {
-  font-family: 'Playfair Display', serif;
-  float: left;
-  font-size: 4.25rem;
-  line-height: 0.8;
-  padding-top: 4px;
-  padding-right: 12px;
-  padding-left: 2px;
-  font-weight: 800;
-  color: #F43F5E;
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
+  }
 }
 
-/* Continuous Marquee Animation */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 28s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
-}
-
-/* Rotated vertical text helper */
-.vertical-text {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
-/* Custom Grain Overlay for Magazine Texture */
-.paper-grain {
-  background-image: radial-gradient(#F43F5E 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
-  opacity: 0.08;
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
 }
 
 

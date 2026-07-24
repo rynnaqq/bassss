@@ -1,42 +1,42 @@
-export interface Article {
+export interface StatItem {
   id: string;
-  title: string;
-  subtitle: string;
-  category: 'Culture' | 'Architecture' | 'Tech & Ethics' | 'Fashion & Form' | 'Visual Essays';
-  author: {
-    name: string;
-    role: string;
-    avatar: string;
-  };
-  issueNumber: string;
-  date: string;
-  readTime: string;
-  coverImage: string;
-  secondaryImage?: string;
-  excerpt: string;
-  contentParagraphs: string[];
-  pullQuote?: string;
-  audioDuration?: string;
-  featured?: boolean;
-  trendingRank?: number;
+  value: string;
+  label: string;
 }
 
-export interface Issue {
-  number: string;
-  title: string;
-  theme: string;
-  releaseDate: string;
-  coverImage: string;
-  summary: string;
-  featuredArticlesCount: number;
+export interface SocialLink {
+  id: string;
+  name: string;
+  iconName: 'Github' | 'Instagram' | 'Youtube' | 'Tiktok' | 'Linkedin' | 'Twitter' | 'Mail';
+  url: string;
+  handle: string;
 }
 
-export interface PhotoEssay {
+export interface Project {
   id: string;
   title: string;
-  photographer: string;
-  location: string;
+  category: string;
+  description: string;
   image: string;
-  caption: string;
-  aspectRatio: string;
+  tags: string[];
+  demoUrl: string;
+  githubUrl: string;
+  featured?: boolean;
+}
+
+export interface Service {
+  id: string;
+  icon: string;
+  title: string;
+  description: string;
+  highlights: string[];
+}
+
+export interface SkillCategory {
+  category: string;
+  skills: {
+    name: string;
+    level: number;
+    icon: string;
+  }[];
 }
