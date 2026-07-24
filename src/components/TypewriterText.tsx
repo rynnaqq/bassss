@@ -47,10 +47,7 @@ export const TypewriterText: React.FC<TypewriterTextProps> = ({
 
   // Highlight special keywords in the typed substring if they are present
   const renderFormattedText = (fullTyped: string) => {
-    // Keywords to highlight: "web developer", "HTML, CSS, and JavaScript"
     const keywords = ["web developer", "HTML, CSS, and JavaScript"];
-    
-    // Simple replacement with styled spans
     let parts: { text: string; isHighlight: boolean }[] = [{ text: fullTyped, isHighlight: false }];
 
     keywords.forEach((keyword) => {

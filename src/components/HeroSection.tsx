@@ -9,6 +9,7 @@ import {
   Code2,
   Sparkles,
   ExternalLink,
+  User,
 } from 'lucide-react';
 import { HERO_STATS, SOCIAL_LINKS } from '../data';
 import { TypewriterText } from './TypewriterText';
@@ -98,26 +99,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               ))}
             </div>
 
-            {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
-              {/* Button 1 (Primary) */}
+            {/* View Profile Button */}
+            <div className="pt-2 w-full sm:w-auto">
               <button
-                onClick={onOpenHireModal}
-                id="hero-hire-me-btn"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#e8590c] text-white font-extrabold text-sm tracking-wider uppercase flex items-center justify-center gap-2 hover:bg-[#d9480f] hover:shadow-[0_0_30px_rgba(232,89,12,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+                onClick={() => {
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                id="hero-view-profile-btn"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#e8590c] text-white font-extrabold text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 hover:bg-[#d9480f] hover:shadow-[0_0_30px_rgba(232,89,12,0.6)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer group"
               >
-                <span>Hire me</span>
-                <ArrowRight className="w-4 h-4 stroke-[3]" />
-              </button>
-
-              {/* Button 2 (Secondary) */}
-              <button
-                onClick={onOpenCvModal}
-                id="hero-download-cv-btn"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#242424] border border-[#e8590c] text-[#FFF7ED] font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 hover:bg-[#e8590c]/15 hover:shadow-[0_0_20px_rgba(232,89,12,0.3)] transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
-              >
-                <Download className="w-4 h-4 text-[#e8590c]" />
-                <span>Download CV</span>
+                <User className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                <span>View Profile</span>
+                <ArrowRight className="w-4 h-4 stroke-[3] group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
