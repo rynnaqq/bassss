@@ -1,157 +1,158 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import { X, Send, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import HeaderNavbar from './components/HeaderNavbar';
+import EditorialDrawer from './components/EditorialDrawer';
+import HeroCover from './components/HeroCover';
+import MarqueeBanner from './components/MarqueeBanner';
+import AsymmetricGrid from './components/AsymmetricGrid';
+import ParallaxQuoteSection from './components/ParallaxQuoteSection';
+import CultureDeepDive from './components/CultureDeepDive';
+import PhotoEssayCarousel from './components/PhotoEssayCarousel';
+import IssueArchives from './components/IssueArchives';
+import ArticleModal from './components/ArticleModal';
+import NewsletterSubscription from './components/NewsletterSubscription';
+import FooterEditorial from './components/FooterEditorial';
+
+import { ARTICLES, CURRENT_ISSUE, ARCHIVED_ISSUES, PHOTO_ESSAYS } from './data/magazineData';
+import { Article, Issue } from './types';
 
 export default function App() {
-  const [consultationModalOpen, setConsultationModalOpen] = useState(false);
-  const [modalSubject, setModalSubject] = useState('Konsultasi Infrastruktur & AI Enterprise');
-  const [modalForm, setModalForm] = useState({
-    name: '',
-    email: '',
-    notes: ''
-  });
-  const [modalSuccess, setModalSuccess] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [activeIssue, setActiveIssue] = useState<Issue>(CURRENT_ISSUE);
+  const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [savedArticleIds, setSavedArticleIds] = useState<string[]>(['synthetic-renaissance']);
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+  const [audioNotification, setAudioNotification] = useState<string | null>(null);
 
-  const handleOpenConsultation = (subject: string = '') => {
-    if (subject) {
-      setModalSubject(subject);
-    }
-    setConsultationModalOpen(true);
-    setModalSuccess(false);
+  // Audio Toggle Simulation
+  const handleToggleAudio = () => {
+    setIsAudioPlaying((prev) => {
+      const nextState = !prev;
+      setAudioNotification(nextState ? 'Playing Audio Narration (AURA Issue No. 42)' : 'Audio Paused');
+      setTimeout(() => setAudioNotification(null), 3000);
+      return nextState;
+    });
   };
 
-  const handleModalSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!modalForm.name || !modalForm.email) return;
-    setModalSuccess(true);
-    setTimeout(() => {
-      setModalForm({ name: '', email: '', notes: '' });
-    }, 500);
+  // Bookmark Toggle
+  const handleToggleSave = (articleId: string) => {
+    setSavedArticleIds((prev) =>
+      prev.includes(articleId) ? prev.filter((id) => id !== articleId) : [...prev, articleId]
+    );
   };
+
+  // Featured Article
+  const featuredArticle = ARTICLES.find((a) => a.featured) || ARTICLES[0];
+  const deepDiveArticle = ARTICLES.find((a) => a.category === 'Culture') || ARTICLES[1];
 
   return (
-    <div className="min-h-screen bg-[#121212] text-[#CCCCCC] font-sans antialiased selection:bg-[#A5A5A5] selection:text-[#121212]">
-      {/* Sticky Header Navigation */}
-      <Navbar onOpenConsultation={() => handleOpenConsultation()} />
+    <div className="min-h-screen bg-[#FFF1F2] text-[#1C1917] font-sans antialiased selection:bg-[#F43F5E] selection:text-white relative">
+      
+      {/* Paper grain overlay for tactile magazine texture */}
+      <div className="fixed inset-0 paper-grain pointer-events-none z-0" />
 
-      {/* Main Content Sections */}
-      <main id="main-content">
-        <Hero onOpenConsultation={() => handleOpenConsultation()} />
-        <About />
-        <Services onOpenConsultation={(svcTitle) => handleOpenConsultation(svcTitle)} />
-        <Portfolio onOpenConsultation={(projTitle) => handleOpenConsultation(projTitle)} />
-        <Contact initialSubject={modalSubject} />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Quick Consultation Modal */}
-      {consultationModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#1A1A1A] border border-[#A5A5A5] rounded-xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
-            
-            <button
-              onClick={() => setConsultationModalOpen(false)}
-              className="absolute top-6 right-6 p-2 rounded-md bg-[#121212] text-[#7F7F7F] hover:text-[#F2F2F2] border border-[#595959] transition-colors"
-              aria-label="Tutup Modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div>
-              <span className="text-[11px] font-mono text-[#A5A5A5] uppercase tracking-wider block mb-1">
-                AETHEL DYNAMICS B2B
-              </span>
-              <h3 className="text-xl font-bold text-[#F2F2F2]">Mulai Konsultasi Strategis</h3>
-              <p className="text-xs text-[#7F7F7F] mt-1">
-                Subjek: <span className="text-[#CCCCCC] font-medium">{modalSubject}</span>
-              </p>
-            </div>
-
-            {modalSuccess ? (
-              <div className="py-8 text-center space-y-3 bg-[#121212] border border-[#A5A5A5] rounded-lg p-6">
-                <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
-                <h4 className="text-base font-bold text-[#F2F2F2]">Jadwal Konsultasi Diterima</h4>
-                <p className="text-xs text-[#CCCCCC] leading-relaxed">
-                  Terima kasih. Solution Architect Aethel Dynamics akan mengontak Anda di email <span className="text-[#F2F2F2] font-mono">{modalForm.email}</span> dalam kurun waktu 2 jam.
-                </p>
-                <button
-                  onClick={() => setConsultationModalOpen(false)}
-                  className="mt-4 px-6 py-2 text-xs font-semibold text-[#121212] bg-[#F2F2F2] hover:bg-[#A5A5A5] rounded transition-colors"
-                >
-                  Selesai
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleModalSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-medium text-[#F2F2F2] mb-1">
-                    Nama & Jabatan
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Contoh: Alex Pratama (CTO)"
-                    value={modalForm.name}
-                    onChange={(e) => setModalForm(prev => ({ ...prev, name: e.target.value }))}
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#595959] rounded-md text-xs text-[#F2F2F2] focus:outline-none focus:ring-1 focus:ring-[#A5A5A5]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-[#F2F2F2] mb-1">
-                    Email Bisnis Korporat
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="alex@perusahaan.com"
-                    value={modalForm.email}
-                    onChange={(e) => setModalForm(prev => ({ ...prev, email: e.target.value }))}
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#595959] rounded-md text-xs text-[#F2F2F2] focus:outline-none focus:ring-1 focus:ring-[#A5A5A5]"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-[#F2F2F2] mb-1">
-                    Catatan Singkat / Spesifikasi
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Tambahkan catatan rincian spesifik jika ada..."
-                    value={modalForm.notes}
-                    onChange={(e) => setModalForm(prev => ({ ...prev, notes: e.target.value }))}
-                    className="w-full px-3.5 py-2.5 bg-[#121212] border border-[#595959] rounded-md text-xs text-[#F2F2F2] focus:outline-none focus:ring-1 focus:ring-[#A5A5A5] resize-none"
-                  />
-                </div>
-
-                <div className="pt-2 flex items-center gap-2 text-[11px] text-[#7F7F7F]">
-                  <ShieldCheck className="w-4 h-4 text-[#A5A5A5] shrink-0" />
-                  <span>Kerahasiaan data terjamin dengan Perjanjian Kerahasiaan (NDA).</span>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="w-full py-3 px-4 text-xs font-semibold text-[#121212] bg-[#F2F2F2] hover:bg-[#A5A5A5] rounded-md transition-colors flex items-center justify-center gap-2 shadow-lg"
-                  >
-                    <span>Kirim & Penjadwalan Sesi</span>
-                    <Send className="w-4 h-4" />
-                  </button>
-                </div>
-              </form>
-            )}
-
-          </div>
+      {/* Floating Audio Toast Notification */}
+      {audioNotification && (
+        <div className="fixed bottom-6 right-6 z-50 bg-[#1C1917] text-white px-5 py-3 rounded-full border border-[#F43F5E] shadow-2xl flex items-center gap-3 text-xs font-mono animate-bounce">
+          <span className="w-2 h-2 rounded-full bg-[#F43F5E] animate-ping" />
+          <span>{audioNotification}</span>
         </div>
       )}
+
+      {/* Header Bar - Hamburger Menu ONLY */}
+      <HeaderNavbar
+        onOpenDrawer={() => setIsDrawerOpen(true)}
+        savedArticlesCount={savedArticleIds.length}
+        onOpenBookmarks={() => {
+          setSelectedCategory('Semua');
+          const el = document.querySelector('#asymmetric-grid');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+        isAudioPlaying={isAudioPlaying}
+        onToggleAudio={handleToggleAudio}
+        currentIssueTitle={activeIssue.title}
+      />
+
+      {/* Full-Screen Magazine Drawer (Triggered by Hamburger) */}
+      <EditorialDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        articles={ARTICLES}
+        archivedIssues={ARCHIVED_ISSUES}
+        currentCategory={selectedCategory}
+        onSelectCategory={(cat) => setSelectedCategory(cat)}
+        onSelectArticle={(art) => setSelectedArticle(art)}
+        onSelectIssue={(iss) => setActiveIssue(iss)}
+        onToggleAudio={handleToggleAudio}
+        isAudioPlaying={isAudioPlaying}
+      />
+
+      {/* Main Content Area */}
+      <main className="relative z-10 space-y-0">
+        
+        {/* Hero Cover Story */}
+        <HeroCover
+          article={featuredArticle}
+          onReadArticle={(art) => setSelectedArticle(art)}
+          onToggleAudio={handleToggleAudio}
+          isAudioPlaying={isAudioPlaying}
+          isSaved={savedArticleIds.includes(featuredArticle.id)}
+          onToggleSave={handleToggleSave}
+        />
+
+        {/* Marquee Ticker */}
+        <MarqueeBanner />
+
+        {/* Asymmetric Article Grid */}
+        <AsymmetricGrid
+          articles={ARTICLES}
+          selectedCategory={selectedCategory}
+          onSelectCategory={(cat) => setSelectedCategory(cat)}
+          onReadArticle={(art) => setSelectedArticle(art)}
+          savedArticleIds={savedArticleIds}
+          onToggleSave={handleToggleSave}
+        />
+
+        {/* Parallax Quote Banner */}
+        <ParallaxQuoteSection />
+
+        {/* Culture & Editor's Note Deep Dive */}
+        <CultureDeepDive
+          article={deepDiveArticle}
+          onReadArticle={(art) => setSelectedArticle(art)}
+          onToggleAudio={handleToggleAudio}
+          isAudioPlaying={isAudioPlaying}
+        />
+
+        {/* Photo Essay Gallery */}
+        <PhotoEssayCarousel essays={PHOTO_ESSAYS} />
+
+        {/* Issue Archives Switcher */}
+        <IssueArchives
+          issues={ARCHIVED_ISSUES}
+          currentIssue={activeIssue}
+          onSelectIssue={(iss) => setActiveIssue(iss)}
+        />
+
+        {/* Newsletter Dispatch */}
+        <NewsletterSubscription />
+
+      </main>
+
+      {/* Footer Colophon */}
+      <FooterEditorial />
+
+      {/* Interactive Reader Modal */}
+      <ArticleModal
+        article={selectedArticle}
+        onClose={() => setSelectedArticle(null)}
+        isSaved={selectedArticle ? savedArticleIds.includes(selectedArticle.id) : false}
+        onToggleSave={handleToggleSave}
+        isAudioPlaying={isAudioPlaying}
+        onToggleAudio={handleToggleAudio}
+        allArticles={ARTICLES}
+        onSelectRelatedArticle={(art) => setSelectedArticle(art)}
+      />
 
     </div>
   );
