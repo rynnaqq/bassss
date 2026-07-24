@@ -7,12 +7,12 @@ import {
   Youtube,
   Smartphone,
   Code2,
-  Sparkles,
   ExternalLink,
   User,
 } from 'lucide-react';
-import { HERO_STATS, SOCIAL_LINKS } from '../data';
+import { SOCIAL_LINKS } from '../data';
 import { TypewriterText } from './TypewriterText';
+import { CyberDecoderText } from './CyberDecoderText';
 
 interface HeroSectionProps {
   onOpenHireModal: () => void;
@@ -57,21 +57,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* LEFT COLUMN: Content & Intro */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
             
-            {/* Tagline */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#242424] border border-[#383838]">
-              <Sparkles className="w-3.5 h-3.5 text-[#e8590c]" />
-              <span className="text-[#FFF7ED] font-semibold text-xs sm:text-sm tracking-wide">
-                Welcome to my creative space
-              </span>
-            </div>
-
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#FFF7ED] tracking-tight leading-[1.15]">
-              Hello Everyone <br className="hidden sm:inline" />
-              I'm <span className="text-[#e8590c] relative inline-block">
-                Ryan
-                <span className="absolute bottom-1 left-0 w-full h-[3px] bg-[#e8590c]/40 rounded-full glow-orange" />
-              </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#FFF7ED] tracking-tight leading-[1.2] flex flex-col items-start gap-1 sm:gap-2">
+              <span>Hello Everyone</span>
+              <CyberDecoderText
+                text="I'm Ryan"
+                highlightText="Ryan"
+                speed={35}
+                repeatInterval={10000}
+              />
             </h1>
 
             {/* Body Paragraph with Typewriter Effect */}
@@ -82,25 +76,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               className="text-base sm:text-lg max-w-xl"
             />
 
-            {/* Stats Grid (3 Grid Box) */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-xl pt-2">
-              {HERO_STATS.map((stat) => (
-                <div
-                  key={stat.id}
-                  className="bg-[#242424] border border-[#383838] rounded-2xl p-3.5 sm:p-4 text-center hover:border-[#e8590c]/50 hover:bg-[#2c2c2c] transition-all duration-300 group shadow-md"
-                >
-                  <div className="text-2xl sm:text-3xl font-black text-[#e8590c] tracking-tight group-hover:scale-105 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-[10px] sm:text-xs text-zinc-400 font-medium mt-1 leading-tight uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* View Profile Button */}
-            <div className="pt-2 w-full sm:w-auto">
+            {/* View Profile Button - Desktop */}
+            <div className="hidden lg:block pt-2 w-full sm:w-auto">
               <button
                 onClick={() => {
                   document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
@@ -223,6 +200,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
             </div>
+          </div>
+
+          {/* View Profile Button - Mobile (Positioned at the very bottom on HP) */}
+          <div className="block lg:hidden col-span-1 w-full pt-4">
+            <button
+              onClick={() => {
+                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              id="hero-view-profile-btn-mobile"
+              className="w-full px-8 py-3.5 rounded-full bg-[#e8590c] text-white font-extrabold text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 hover:bg-[#d9480f] shadow-[0_0_20px_rgba(232,89,12,0.4)] transition-all duration-300 cursor-pointer group active:scale-[0.98]"
+            >
+              <User className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+              <span>View Profile</span>
+              <ArrowRight className="w-4 h-4 stroke-[3] group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
         </div>
