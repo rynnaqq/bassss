@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark-bg: #121212;
+  --color-dark-card: #1A1A1A;
+  --color-charcoal: #595959;
+  --color-grey-muted: #7F7F7F;
+  --color-silver-accent: #A5A5A5;
+  --color-dust-grey: #CCCCCC;
+  --color-platinum: #F2F2F2;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #121212;
+    color: #CCCCCC;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #F2F2F2;
+  }
+}
+
+/* Custom Scrollbar for sleek dark modern look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #595959;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A5A5A5;
+}
+
+/* Grayscale image transition effect requested in PRD */
+.img-grayscale-transition {
+  filter: grayscale(100%) contrast(110%);
+  transition: all 0.5s ease-in-out;
+}
+
+.img-grayscale-transition:hover {
+  filter: grayscale(0%) contrast(100%);
+}
+
